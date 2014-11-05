@@ -1,12 +1,18 @@
 default:
+  suites:
+    default:
+      contexts:
+        - FeatureContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
   extensions:
-    Behat\MinkExtension\Extension:
+    Behat\MinkExtension:
       goutte: ~
       selenium2: ~
       base_url: http://127.0.0.1:8888
       default_session: 'goutte'
       javascript_session: 'selenium2'
-    Drupal\DrupalExtension\Extension:
+    Drupal\DrupalExtension:
       blackbox: ~
       api_driver: 'drupal'
       drush:
@@ -17,10 +23,3 @@ default:
         drupal_root: 'drupal'
       text:
         log_out: "Log out"
-
-
-teo:
-  extensions:
-    Drupal\DrupalExtension\Extension:
-      drupal:
-        drupal_root: '/Users/teofilosibileau/Developing/NUCIVIC/BUILDS/drupal/'
