@@ -1,16 +1,18 @@
 <?php
-
+use Drupal\DrupalExtension\Context\RawDrupalContext;
 use Drupal\DrupalExtension\Context\DrupalContext;
+use Drupal\DrupalExtension\Context\DrupalAwareInterface;
+use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Behat\Context\Step\Given;
 use Behat\Behat\Context\Step\Then;
 use Symfony\Component\Process\Process;
+
 use Behat\Gherkin\Node\TableNode;
 use Behat\Mink\Driver\Selenium2Driver;
-// use Cocur\Slugify\Slugify;
 
-require 'vendor/autoload.php';
 
-class FeatureContext extends DrupalContext
+
+class FeatureContext extends RawDrupalContext implements DrupalAwareInterface
 {
 
   /**
@@ -139,28 +141,5 @@ class FeatureContext extends DrupalContext
    */
   public function setErrorReportingBeforeScenario($event) {
     error_reporting(E_ERROR | E_PARSE);
-  }
-
-  /**
-   * Take screenshot when step fails.
-   * Works only with Selenium2Driver.
-   * 
-   * @AfterStep
-   */
-  public function takeScreenshotAfterStep($event)
-  {
-    if (4 === $event->getResult()) {
-      $driver = $this->getSession()->getDriver();
-      if (!($driver instanceof Selenium2Driver)) {
-        // throw new UnsupportedDriverActionException('Taking screenshots is not supported by %s, use Selenium2Driver instead.', $driver);
-        return;
-      }
-      $screenshot = $driver->getScreenshot();
-      // $slugify = new Slugify();
-      $file = 'screens/' . time() . ' ' . $event->getLogicalParent()->getTitle();
-      // $file = $slugify->slugify($file) . '.png';
-      $file = $file . '.png';
-      file_put_contents($file, $screenshot);
-    }
   }
 }

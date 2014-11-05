@@ -3,9 +3,9 @@ Feature: Testing group organizer role and permissions
   @api @javascript
   Scenario: Add Author to group
     Given users:
-      | name             | mail                      | status | roles     |
-      | data_contributor | data_contributor@test.com | 1      | 226931607 |
-      | group_organizer  | go@test.com               | 1      | 161863194 |
+      | name             | mail                      | status | roles            |
+      | data_contributor | data_contributor@test.com | 1      | data contributor |
+      | group_organizer  | go@test.com               | 1      | group organizer  |
       And "group" nodes:
         | title      | status | body       | group_group |
         | test group | 1      | Test Group | 1           |
@@ -24,14 +24,14 @@ Feature: Testing group organizer role and permissions
   @api @javascript
   Scenario: Remove Author from group
     Given users:
-      | name             | mail                      | status | roles     |
-      | data_contributor | data_contributor@test.com | 1      | 226931607 |
-      | group_organizer  | go@test.com               | 1      | 161863194 |
+      | name             | mail                      | status | roles            |
+      | data_contributor | data_contributor@test.com | 1      | data contributor |
+      | group_organizer  | go@test.com               | 1      | group organizer  |
       And "group" nodes:
         | title      | status | body       | group_group |
         | test group | 1      | Test Group | 1           |
       And groups memberships:
-        | group      | members                          |
+        | group      | members          |
         | test group | data_contributor |
     When I am logged in as "group_organizer"
       And I am on "/group/test-group"

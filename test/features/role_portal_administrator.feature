@@ -3,9 +3,9 @@ Feature: Testing portal administrator role and permissions
   @api @javascript
   Scenario: Add Editor to group and test for og role assignment rule
     Given users:
-      | name         | mail            | status | roles              |
-      | editor       | editor@test.com | 1      | 254633039          |
-      | portal admin | admin@test.com  | 1      | 27274083,161863194 |
+      | name         | mail            | status | roles                                |
+      | editor       | editor@test.com | 1      | content editor                       |
+      | portal admin | admin@test.com  | 1      | portal administrator,group organizer |
       And "group" nodes:
       | title      | status | body       | group_group |
       | test group | 1      | Test Group | 1           |
@@ -27,9 +27,9 @@ Feature: Testing portal administrator role and permissions
   @api @javascript
   Scenario: Remove Editor from group
     Given users:
-      | name         | mail            | status | roles              |
-      | editor       | editor@test.com | 1      | 254633039          |
-      | portal admin | admin@test.com  | 1      | 27274083,161863194 |
+      | name         | mail            | status | roles                                |
+      | editor       | editor@test.com | 1      | content editor                       |
+      | portal admin | admin@test.com  | 1      | portal administrator,group organizer |
       And "group" nodes:
         | title      | status | body       | group_group |
         | test group | 1      | Test Group | 1           |
@@ -49,8 +49,8 @@ Feature: Testing portal administrator role and permissions
   @api
   Scenario: Create group
     Given users:
-      | name         | mail           | status | roles              |
-      | portal admin | admin@test.com | 1      | 27274083,161863194 |
+      | name         | mail           | status | roles                                |
+      | portal admin | admin@test.com | 1      | portal administrator,group organizer |
       And I am logged in as "portal admin"
       And I am on "/node/add/group"
     When I fill in "title" with "Test Group"
@@ -61,8 +61,8 @@ Feature: Testing portal administrator role and permissions
   @api
   Scenario: Add an User
     Given users:
-      | name         | mail           | status | roles              |
-      | portal admin | admin@test.com | 1      | 27274083,161863194 |
+      | name         | mail           | status | roles                                |
+      | portal admin | admin@test.com | 1      | portal administrator,group organizer |
       And I am logged in as "portal admin"
       And I am on "/admin/people/create"
     When I fill in "edit-name" with "new content editor"
@@ -75,8 +75,8 @@ Feature: Testing portal administrator role and permissions
   @api @javascript
   Scenario: Remove an User
     Given users:
-      | name         | mail           | status | roles                        |
-      | portal admin | admin@test.com | 1      | 27274083,161863194,161863194 |
+      | name         | mail           | status | roles                                |
+      | portal admin | admin@test.com | 1      | portal administrator,group organizer |
       And I am logged in as "portal admin"
       And I am on "/users/new-content-editor"
     When I click "Edit" in the "toolbar" region
@@ -88,49 +88,49 @@ Feature: Testing portal administrator role and permissions
   @api @javascript
   Scenario: Give an authenticated user the data contributor role
     Given users:
-      | name          | mail                   | status | roles              |
-      | authenticated | authenticated@test.com | 1      | 2                  |
-      | portal admin  | admin@test.com         | 1      | 27274083,161863194 |
+      | name          | mail                   | status | roles                                |
+      | authenticated | authenticated@test.com | 1      | 2                                    |
+      | portal admin  | admin@test.com         | 1      | portal administrator,group organizer |
       And I am logged in as "portal admin"
       And I am on "/users/authenticated"
     When I click "Edit" in the "toolbar" region
-      And I check the box "edit-roles-change-226931607"
+      And I check the box "edit-roles-change-data_contributor"
       And I press "Save"
     Then I should see "The changes have been saved."
     
   @api @javascript
   Scenario: Give a data contributor the content editor role
     Given users:
-      | name             | mail                      | status | roles              |
-      | data contributor | data_contributor@test.com | 1      | 226931607          |
-      | portal admin     | admin@test.com            | 1      | 27274083,161863194 |
+      | name             | mail                      | status | roles                                |
+      | data contributor | data_contributor@test.com | 1      | data contributor                     |
+      | portal admin     | admin@test.com            | 1      | portal administrator,group organizer |
       And I am logged in as "portal admin"
       And I am on "/users/data-contributor"
     When I click "Edit" in the "toolbar" region
-      And I check the box "edit-roles-change-254633039"
-      And I uncheck the box "edit-roles-change-226931607"
+      And I check the box "edit-roles-change-content_editor"
+      And I uncheck the box "edit-roles-change-data_contributor"
       And I press "Save"
     Then I should see "The changes have been saved."
       
   @api @javascript
   Scenario: Move a content editor to the data contributor role
     Given users:
-      | name         | mail            | status | roles              |
-      | editor       | editor@test.com | 1      | 226931607          |
-      | portal admin | admin@test.com  | 1      | 27274083,161863194 |
+      | name         | mail            | status | roles                                |
+      | editor       | editor@test.com | 1      | data contributor                     |
+      | portal admin | admin@test.com  | 1      | portal administrator,group organizer |
       And I am logged in as "portal admin"
       And I am on "/users/editor"
     When I click "Edit" in the "toolbar" region
-      And I uncheck the box "edit-roles-change-254633039"
-      And I check the box "edit-roles-change-226931607"
+      And I uncheck the box "edit-roles-change-content_editor"
+      And I check the box "edit-roles-change-data_contributor"
       And I press "Save"
     Then I should see "The changes have been saved."
 
   @api
   Scenario: Add a menu link
     Given users:
-      | name         | mail           | status | roles              |
-      | portal admin | admin@test.com | 1      | 27274083,161863194 |
+      | name         | mail           | status | roles                                |
+      | portal admin | admin@test.com | 1      | portal administrator,group organizer |
       And I am logged in as "portal admin"
       And I am on "/admin/structure/menu"
     When I click "add link"
@@ -142,10 +142,10 @@ Feature: Testing portal administrator role and permissions
   @api @javascript
   Scenario: Can delete past revisions
     Given users:
-      | name             | mail                      | status | roles              |
-      | data_contributor | data_contributor@test.com | 1      | 226931607          |
-      | editor           | editor@test.com           | 1      | 226931607          |
-      | portal admin     | admin@test.com            | 1      | 27274083,161863194 |
+      | name             | mail                      | status | roles                                |
+      | data_contributor | data_contributor@test.com | 1      | data contributor                     |
+      | editor           | editor@test.com           | 1      | data contributor                     |
+      | portal admin     | admin@test.com            | 1      | portal administrator,group organizer |
       And "dataset" nodes:
         | title | author | status |
         | test  | author | 1      |
