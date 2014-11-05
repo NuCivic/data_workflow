@@ -3,9 +3,9 @@ Feature: Testing content editor role and permissions
   @api
   Scenario: Access a list of unpublished content
     Given users:
-      | name             | mail                      | status | roles     |
-      | data_contributor | data_contributor@test.com | 1      | 226931607 |
-      | editor           | editor@test.com           | 1      | 254633039 |
+      | name             | mail                      | status | roles            |
+      | data_contributor | data_contributor@test.com | 1      | data contributor |
+      | editor           | editor@test.com           | 1      | content editor   |
       And "dataset" nodes:
         | title        | author           | status |
         | test dataset | data_contributor | 0      |
@@ -26,9 +26,9 @@ Feature: Testing content editor role and permissions
   @api
   Scenario: Review a dataset posted by a data contributor
     Given users:
-      | name             | mail                      | status | roles     |
-      | data_contributor | data_contributor@test.com | 1      | 226931607 |
-      | editor           | editor@test.com           | 1      | 254633039 |
+      | name             | mail                      | status | roles            |
+      | data_contributor | data_contributor@test.com | 1      | data contributor |
+      | editor           | editor@test.com           | 1      | content editor   |
       And "dataset" nodes:
         | title | author           | status |
         | test  | data_contributor | 0      |
@@ -48,9 +48,9 @@ Feature: Testing content editor role and permissions
   @api
   Scenario: Review a resource posted by a data contributor
     Given users:
-      | name             | mail                      | status | roles     |
-      | data_contributor | data_contributor@test.com | 1      | 226931607 |
-      | editor           | editor@test.com           | 1      | 254633039 |
+      | name             | mail                      | status | roles            |
+      | data_contributor | data_contributor@test.com | 1      | data contributor |
+      | editor           | editor@test.com           | 1      | content editor   |
       And "resource" nodes:
         | title | author           | status |
         | test  | data_contributor | 0      |
@@ -70,9 +70,9 @@ Feature: Testing content editor role and permissions
   @api @javascript
   Scenario: Publish a dataset posted by a data contributor
     Given users:
-      | name             | mail                      | status | roles     |
-      | data_contributor | data_contributor@test.com | 1      | 226931607 |
-      | editor           | editor@test.com           | 1      | 254633039 |
+      | name             | mail                      | status | roles            |
+      | data_contributor | data_contributor@test.com | 1      | data contributor |
+      | editor           | editor@test.com           | 1      | content editor   |
       And "dataset" nodes:
         | title | author           | status |
         | test  | data_contributor | 0      |
@@ -92,9 +92,9 @@ Feature: Testing content editor role and permissions
   @api @javascript
   Scenario: Publish a resource posted by a data contributor
     Given users:
-      | name             | mail                      | status | roles     |
-      | data_contributor | data_contributor@test.com | 1      | 226931607 |
-      | editor           | editor@test.com           | 1      | 254633039 |
+      | name             | mail                      | status | roles            |
+      | data_contributor | data_contributor@test.com | 1      | data contributor |
+      | editor           | editor@test.com           | 1      | content editor   |
       And "resource" nodes:
         | title | author           | status |
         | test  | data_contributor | 0      |

@@ -3,8 +3,8 @@ Feature: Testing data contributor role and permissions
   @api
   Scenario: Can see the administration menu
     Given users:
-      | name         | mail                  | status     | roles     |
-      | data_contributor  | data_contributor@test.com  | 1          | 226931607 |
+      | name             | mail                      | status | roles            |
+      | data_contributor | data_contributor@test.com | 1      | data contributor |
       And I am logged in as "data_contributor"
     When I am on the homepage
     Then I should see the administration menu
@@ -12,8 +12,8 @@ Feature: Testing data contributor role and permissions
   @api @javascript
   Scenario: Can create a Dataset and Resource nodes
     Given users:
-      | name             | mail                      | status | roles     |
-      | data_contributor | data_contributor@test.com | 1      | 226931607 |
+      | name             | mail                      | status | roles            |
+      | data_contributor | data_contributor@test.com | 1      | data contributor |
       And I am logged in as "data_contributor"
     When I am on "/node/add/dataset"
       And I fill in "edit-title" with "Test"
@@ -27,8 +27,8 @@ Feature: Testing data contributor role and permissions
   @api
   Scenario: View my unpublished datasets
     Given users:
-      | name             | mail                      | status | roles     |
-      | data_contributor | data_contributor@test.com | 1      | 226931607 |
+      | name             | mail                      | status | roles            |
+      | data_contributor | data_contributor@test.com | 1      | data contributor |
       And "dataset" nodes:
         | title   | author           | status |
         | test    | data_contributor | 0      |
@@ -41,8 +41,8 @@ Feature: Testing data contributor role and permissions
   @api
   Scenario: View my unpublished resources
     Given users:
-      | name             | mail                      | status | roles     |
-      | data_contributor | data_contributor@test.com | 1      | 226931607 |
+      | name             | mail                      | status | roles            |
+      | data_contributor | data_contributor@test.com | 1      | data contributor |
       And "resource" nodes:
         | title   | author           | status |
         | test    | data_contributor | 0      |
@@ -55,8 +55,8 @@ Feature: Testing data contributor role and permissions
   @api
   Scenario: Update my own dataset
     Given users:
-      | name             | mail                      | status | roles     |
-      | data_contributor | data_contributor@test.com | 1      | 226931607 |
+      | name             | mail                      | status | roles            |
+      | data_contributor | data_contributor@test.com | 1      | data contributor |
       And "dataset" nodes:
         | title | author           | status |
         | test  | data_contributor | 0      |
@@ -70,8 +70,8 @@ Feature: Testing data contributor role and permissions
   @api
   Scenario: Update my own resource
     Given users:
-      | name             | mail                      | status | roles     |
-      | data_contributor | data_contributor@test.com | 1      | 226931607 |
+      | name             | mail                      | status | roles            |
+      | data_contributor | data_contributor@test.com | 1      | data contributor |
       And "resource" nodes:
         | title | author           | status |
         | test  | data_contributor | 0      |
@@ -85,8 +85,8 @@ Feature: Testing data contributor role and permissions
   @api
   Scenario: Delete my own dataset
     Given users:
-      | name             | mail                      | status | roles     |
-      | data_contributor | data_contributor@test.com | 1      | 226931607 |
+      | name             | mail                      | status | roles            |
+      | data_contributor | data_contributor@test.com | 1      | data contributor |
       And "dataset" nodes:
         | title | author           | status |
         | test  | data_contributor | 0      |
@@ -101,8 +101,8 @@ Feature: Testing data contributor role and permissions
   @api
   Scenario: Delete my own resource
     Given users:
-      | name             | mail                      | status | roles     |
-      | data_contributor | data_contributor@test.com | 1      | 226931607 |
+      | name             | mail                      | status | roles            |
+      | data_contributor | data_contributor@test.com | 1      | data contributor |
       And "resource" nodes:
         | title | author           | status |
         | test  | data_contributor | 0      |
