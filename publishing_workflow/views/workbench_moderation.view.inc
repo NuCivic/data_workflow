@@ -47,26 +47,23 @@ $handler->display->display_options['relationships']['nid']['required'] = TRUE;
 $handler->display->display_options['relationships']['uid']['id'] = 'uid';
 $handler->display->display_options['relationships']['uid']['table'] = 'node_revision';
 $handler->display->display_options['relationships']['uid']['field'] = 'uid';
-/* Relationship: Entity Reference: Referenced Entity */
-$handler->display->display_options['relationships']['field_resources_target_id']['id'] = 'field_resources_target_id';
-$handler->display->display_options['relationships']['field_resources_target_id']['table'] = 'field_data_field_resources';
-$handler->display->display_options['relationships']['field_resources_target_id']['field'] = 'field_resources_target_id';
-$handler->display->display_options['relationships']['field_resources_target_id']['relationship'] = 'nid';
 /* Field: Content: Nid */
 $handler->display->display_options['fields']['nid']['id'] = 'nid';
 $handler->display->display_options['fields']['nid']['table'] = 'node';
 $handler->display->display_options['fields']['nid']['field'] = 'nid';
 $handler->display->display_options['fields']['nid']['relationship'] = 'nid';
 $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
-$handler->display->display_options['fields']['nid']['link_to_node'] = TRUE;
-/* Field: COUNT(DISTINCT Resources Ref) */
-$handler->display->display_options['fields']['nid_1']['id'] = 'nid_1';
-$handler->display->display_options['fields']['nid_1']['table'] = 'node';
-$handler->display->display_options['fields']['nid_1']['field'] = 'nid';
-$handler->display->display_options['fields']['nid_1']['relationship'] = 'field_resources_target_id';
-$handler->display->display_options['fields']['nid_1']['group_type'] = 'count_distinct';
-$handler->display->display_options['fields']['nid_1']['ui_name'] = 'Resources Ref';
-$handler->display->display_options['fields']['nid_1']['exclude'] = TRUE;
+/* Field: COUNT(DISTINCT Content: Resources) */
+$handler->display->display_options['fields']['field_resources']['id'] = 'field_resources';
+$handler->display->display_options['fields']['field_resources']['table'] = 'field_data_field_resources';
+$handler->display->display_options['fields']['field_resources']['field'] = 'field_resources';
+$handler->display->display_options['fields']['field_resources']['relationship'] = 'nid';
+$handler->display->display_options['fields']['field_resources']['group_type'] = 'count_distinct';
+$handler->display->display_options['fields']['field_resources']['label'] = '';
+$handler->display->display_options['fields']['field_resources']['exclude'] = TRUE;
+$handler->display->display_options['fields']['field_resources']['element_label_colon'] = FALSE;
+$handler->display->display_options['fields']['field_resources']['empty'] = 'no';
+$handler->display->display_options['fields']['field_resources']['empty_zero'] = TRUE;
 /* Field: Content: Title */
 $handler->display->display_options['fields']['title']['id'] = 'title';
 $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -74,7 +71,7 @@ $handler->display->display_options['fields']['title']['field'] = 'title';
 $handler->display->display_options['fields']['title']['relationship'] = 'nid';
 $handler->display->display_options['fields']['title']['label'] = '';
 $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
-$handler->display->display_options['fields']['title']['alter']['text'] = '[title] ([nid_1] resources)';
+$handler->display->display_options['fields']['title']['alter']['text'] = '[title] ([field_resources] resources)';
 $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
 $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
 $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
@@ -97,7 +94,7 @@ $handler->display->display_options['fields']['nid_2']['label'] = '';
 $handler->display->display_options['fields']['nid_2']['alter']['alter_text'] = TRUE;
 $handler->display->display_options['fields']['nid_2']['alter']['text'] = '<p class="help-block">Edit the moderation state of [title_1] dataset and its resources below.</p>
 <h3>Dataset:</h3>
-<strong>Edit:</strong> <a href="/node/[nid_1]/edit">[title_1]</a>';
+<strong>Edit:</strong> <a href="/node/[nid]/edit">[title_1]</a>';
 $handler->display->display_options['fields']['nid_2']['element_label_colon'] = FALSE;
 $handler->display->display_options['fields']['nid_2']['element_default_classes'] = FALSE;
 /* Field: Moderation state */
@@ -332,3 +329,4 @@ $handler->display->display_options['path'] = 'admin/workbench/drafts';
 $handler->display->display_options['menu']['type'] = 'tab';
 $handler->display->display_options['menu']['title'] = 'My drafts';
 $handler->display->display_options['menu']['weight'] = '98';
+
