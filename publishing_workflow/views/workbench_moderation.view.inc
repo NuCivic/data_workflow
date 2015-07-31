@@ -276,9 +276,9 @@ $handler->display->display_options['filters']['is_current']['group'] = 1;
 $handler->display->display_options['filters']['state_1']['id'] = 'state_1';
 $handler->display->display_options['filters']['state_1']['table'] = 'workbench_moderation_node_history';
 $handler->display->display_options['filters']['state_1']['field'] = 'state';
-$handler->display->display_options['filters']['state_1']['operator'] = 'not in';
+$handler->display->display_options['filters']['state_1']['relationship'] = 'nid';
 $handler->display->display_options['filters']['state_1']['value'] = array(
-  'published' => 'published',
+  'draft' => 'draft',
 );
 $handler->display->display_options['filters']['state_1']['group'] = 1;
 /* Filter criterion: Content: Title */
