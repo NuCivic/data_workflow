@@ -226,20 +226,6 @@ $handler->display->display_options['filters']['title']['expose']['label'] = 'Tit
 $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
 $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
 $handler->display->display_options['filters']['title']['expose']['remember'] = TRUE;
-/* Filter criterion: Content: Type */
-$handler->display->display_options['filters']['type']['id'] = 'type';
-$handler->display->display_options['filters']['type']['table'] = 'node';
-$handler->display->display_options['filters']['type']['field'] = 'type';
-$handler->display->display_options['filters']['type']['relationship'] = 'nid';
-$handler->display->display_options['filters']['type']['value'] = array(
-  'dataset' => 'dataset',
-);
-$handler->display->display_options['filters']['type']['exposed'] = TRUE;
-$handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
-$handler->display->display_options['filters']['type']['expose']['label'] = 'Type';
-$handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
-$handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
-$handler->display->display_options['filters']['type']['expose']['remember'] = TRUE;
 $handler->display->display_options['path'] = 'admin/workbench/needs-review';
 $handler->display->display_options['menu']['type'] = 'tab';
 $handler->display->display_options['menu']['title'] = 'Needs review';
@@ -294,37 +280,6 @@ $handler->display->display_options['filters']['title']['expose']['label'] = 'Tit
 $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
 $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
 $handler->display->display_options['filters']['title']['expose']['remember'] = TRUE;
-/* Filter criterion: Content: Type */
-$handler->display->display_options['filters']['type']['id'] = 'type';
-$handler->display->display_options['filters']['type']['table'] = 'node';
-$handler->display->display_options['filters']['type']['field'] = 'type';
-$handler->display->display_options['filters']['type']['relationship'] = 'nid';
-$handler->display->display_options['filters']['type']['value'] = array(
-  'dataset' => 'dataset',
-);
-$handler->display->display_options['filters']['type']['group'] = 1;
-$handler->display->display_options['filters']['type']['exposed'] = TRUE;
-$handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
-$handler->display->display_options['filters']['type']['expose']['label'] = 'Type';
-$handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
-$handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
-$handler->display->display_options['filters']['type']['expose']['remember'] = TRUE;
-/* Filter criterion: Workbench Moderation: State */
-$handler->display->display_options['filters']['state']['id'] = 'state';
-$handler->display->display_options['filters']['state']['table'] = 'workbench_moderation_node_history';
-$handler->display->display_options['filters']['state']['field'] = 'state';
-$handler->display->display_options['filters']['state']['value'] = array(
-  'draft' => 'draft',
-  'needs_review' => 'needs_review',
-);
-$handler->display->display_options['filters']['state']['group'] = 1;
-$handler->display->display_options['filters']['state']['exposed'] = TRUE;
-$handler->display->display_options['filters']['state']['expose']['operator_id'] = 'state_op';
-$handler->display->display_options['filters']['state']['expose']['label'] = 'State';
-$handler->display->display_options['filters']['state']['expose']['operator'] = 'state_op';
-$handler->display->display_options['filters']['state']['expose']['identifier'] = 'state';
-$handler->display->display_options['filters']['state']['expose']['remember'] = TRUE;
-$handler->display->display_options['filters']['state']['expose']['reduce'] = TRUE;
 $handler->display->display_options['path'] = 'admin/workbench/drafts';
 $handler->display->display_options['menu']['type'] = 'tab';
 $handler->display->display_options['menu']['title'] = 'My drafts';
