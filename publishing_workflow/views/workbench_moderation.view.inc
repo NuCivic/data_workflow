@@ -264,6 +264,7 @@ $handler->display->display_options['filters']['uid_current']['group'] = 1;
 $handler->display->display_options['filters']['is_current']['id'] = 'is_current';
 $handler->display->display_options['filters']['is_current']['table'] = 'workbench_moderation_node_history';
 $handler->display->display_options['filters']['is_current']['field'] = 'is_current';
+$handler->display->display_options['filters']['is_current']['relationship'] = 'nid';
 $handler->display->display_options['filters']['is_current']['value'] = '1';
 $handler->display->display_options['filters']['is_current']['group'] = 1;
 /* Filter criterion: Workbench Moderation: State */
