@@ -264,7 +264,6 @@ $handler->display->display_options['filters']['uid_current']['group'] = 1;
 $handler->display->display_options['filters']['is_current']['id'] = 'is_current';
 $handler->display->display_options['filters']['is_current']['table'] = 'workbench_moderation_node_history';
 $handler->display->display_options['filters']['is_current']['field'] = 'is_current';
-$handler->display->display_options['filters']['is_current']['relationship'] = 'nid';
 $handler->display->display_options['filters']['is_current']['value'] = '1';
 $handler->display->display_options['filters']['is_current']['group'] = 1;
 /* Filter criterion: Workbench Moderation: State */
@@ -297,6 +296,12 @@ $handler->display->display_options['filters']['type']['relationship'] = 'nid';
 $handler->display->display_options['filters']['type']['value'] = array(
   'dataset' => 'dataset',
 );
+/* Filter criterion: Workbench Moderation: Current */
+$handler->display->display_options['filters']['is_current_1']['id'] = 'is_current_1';
+$handler->display->display_options['filters']['is_current_1']['table'] = 'workbench_moderation_node_history';
+$handler->display->display_options['filters']['is_current_1']['field'] = 'is_current';
+$handler->display->display_options['filters']['is_current_1']['relationship'] = 'nid';
+$handler->display->display_options['filters']['is_current_1']['value'] = '1';
 $handler->display->display_options['path'] = 'admin/workbench/drafts';
 $handler->display->display_options['menu']['type'] = 'tab';
 $handler->display->display_options['menu']['title'] = 'My drafts';
