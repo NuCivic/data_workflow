@@ -226,6 +226,14 @@ $handler->display->display_options['filters']['title']['expose']['label'] = 'Tit
 $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
 $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
 $handler->display->display_options['filters']['title']['expose']['remember'] = TRUE;
+/* Filter criterion: Content: Type */
+$handler->display->display_options['filters']['type']['id'] = 'type';
+$handler->display->display_options['filters']['type']['table'] = 'node';
+$handler->display->display_options['filters']['type']['field'] = 'type';
+$handler->display->display_options['filters']['type']['relationship'] = 'nid';
+$handler->display->display_options['filters']['type']['value'] = array(
+  'dataset' => 'dataset',
+);
 $handler->display->display_options['path'] = 'admin/workbench/needs-review';
 $handler->display->display_options['menu']['type'] = 'tab';
 $handler->display->display_options['menu']['title'] = 'Needs review';
@@ -280,6 +288,14 @@ $handler->display->display_options['filters']['title']['expose']['label'] = 'Tit
 $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
 $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
 $handler->display->display_options['filters']['title']['expose']['remember'] = TRUE;
+/* Filter criterion: Content: Type */
+$handler->display->display_options['filters']['type']['id'] = 'type';
+$handler->display->display_options['filters']['type']['table'] = 'node';
+$handler->display->display_options['filters']['type']['field'] = 'type';
+$handler->display->display_options['filters']['type']['relationship'] = 'nid';
+$handler->display->display_options['filters']['type']['value'] = array(
+  'dataset' => 'dataset',
+);
 $handler->display->display_options['path'] = 'admin/workbench/drafts';
 $handler->display->display_options['menu']['type'] = 'tab';
 $handler->display->display_options['menu']['title'] = 'My drafts';
