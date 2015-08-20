@@ -136,11 +136,9 @@ function theme_views_workflow_list($variables) {
   }
 
   $items = array();
-  // Init the "Resources without a dataset" parent.
-  $items['null']['data'] = theme_workflow_list_item_dataset();
-  $items['null']['class'] = array('views-workflow-list-item');
   $datasets = array();
   $resources = array();
+  $children_without_datasets = array();
 
   // Separate datasets from resources and render datasets.
   foreach($nodes as $nid => $node) {
@@ -164,7 +162,7 @@ function theme_views_workflow_list($variables) {
         'node' => $node,
         'vbo' => $view->style_plugin->get_field($node->row_index, $vbo_field),
       );
-      $items['null']['children'][] = theme_workflow_list_item_resource($variables);
+      $children_without_datasets[] = theme_workflow_list_item_resource($variables);
 
     } else {
       $parents_nid = array();
@@ -185,7 +183,7 @@ function theme_views_workflow_list($variables) {
               'node' => $node,
               'vbo' => $view->style_plugin->get_field($node->row_index, $vbo_field),
             );
-            $items['null']['children'][] = theme_workflow_list_item_resource($variables);
+            $children_without_datasets[] = theme_workflow_list_item_resource($variables);
             // TODO: add watchdog entry.
             continue;
           }
@@ -199,6 +197,14 @@ function theme_views_workflow_list($variables) {
         $items[$parent_nid]['children'][] = theme_workflow_list_item_resource($variables);
       }
     }
+  }
+
+  if (!empty($children_without_datasets)) {
+    $without_datasets = array();
+    $without_datasets['data'] = theme_workflow_list_item_dataset();
+    $without_datasets['class'] = array('views-workflow-list-item');
+    $without_datasets['children'] = $children_without_datasets;
+    $items[] = $without_datasets;
   }
 
   $variables = array('items' => $items,
