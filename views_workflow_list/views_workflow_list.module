@@ -120,7 +120,7 @@ function theme_views_workflow_list($variables) {
   foreach(array('VBO' => $vbo_field, 'VID' => $vid_field) as $field_key => $field_value){
     if(!isset($field_value)){
       //Can't continue without the vid alias. report and skip.
-      watchdog('views_workflow_list', t('Missing %field_key field value from the View Format settings.', array('%field_key' => $field_key), WATCHDOG_ERROR));
+      watchdog('views_workflow_list', t('Missing %field_key field value from the View Format settings.'), array('%field_key' => $field_key), WATCHDOG_ERROR);
       return;
     }
   }
