@@ -27,6 +27,8 @@ $handler->display->display_options['pager']['options']['id'] = '0';
 $handler->display->display_options['pager']['options']['quantity'] = '9';
 $handler->display->display_options['pager']['options']['expose']['items_per_page_options'] = '10, 25, 50, 100, 200';
 $handler->display->display_options['style_plugin'] = 'workflow_list';
+$handler->display->display_options['style_options']['vbo_field'] = 'views_bulk_operations_1';
+$handler->display->display_options['style_options']['vid_field'] = 'vid';
 $handler->display->display_options['row_plugin'] = 'fields';
 $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
 /* No results behavior: Global: Text area */
@@ -1279,3 +1281,4 @@ $handler->display->display_options['menu']['description'] = 'All content stuck i
 $handler->display->display_options['menu']['weight'] = '100';
 $handler->display->display_options['menu']['context'] = 0;
 $handler->display->display_options['menu']['context_only_inline'] = 0;
+

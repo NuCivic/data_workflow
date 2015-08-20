@@ -21,6 +21,8 @@ class views_workflow_list_plugin_style extends views_plugin_style_list {
     $options['wrapper_class'] = array('default' => 'item-list');
     $options['main_field'] = array('default' => '');
     $options['parent_field'] = array('default' => '');
+    $options['vbo_field'] = array('default' => '');
+    $options['vid_field'] = array('default' => '');
 
     return $options;
   }
