@@ -51,18 +51,7 @@ function publishing_workflow_form_alter(&$form, &$form_state, $form_id) {
         $form['options']['sticky']['#type'] = 'hidden';
       }
       break;
-
-    case 'views_form_dataset_ref_resources_page':
-      $form['actions']['submit']['#submit'][] = 'publishing_workflow_vbo_redirect';
-      break;
   }
-}
-
-/**
- * Submit Callback for views_form_dataset_ref_resources_page form.
- */
-function publishing_workflow_vbo_redirect($form, &$form_state) {
-  $form_state['redirect'] = array('admin/workbench/needs-review');
 }
 
 /**
@@ -107,5 +96,14 @@ function publishing_workflow_reviewers($node){
 function publishing_workflow_block_info_alter(&$blocks, $theme, $code_blocks) {
   if ($blocks['workbench']['block']['region'] == 'content') {
     $blocks['workbench']['block']['status'] = 0;
+  }
+}
+
+/**
+ * Implements hook_css_alter().
+ */
+function publishing_workflow_css_alter(&$css) {
+  if (isset($css['sites/all/modules/contrib/link_badges/link_badges.css'])) {
+    $css['sites/all/modules/contrib/link_badges/link_badges.css']['data'] = drupal_get_path('module', 'publishing_workflow') . '/css/link_badges_custom.css';
   }
 }
